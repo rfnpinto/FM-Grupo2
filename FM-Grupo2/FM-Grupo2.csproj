@@ -180,6 +180,7 @@
     <Compile Include="Models\CampeonatoModel.cs" />
     <Compile Include="Models\EquipaModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JornadaModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TemporadaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
