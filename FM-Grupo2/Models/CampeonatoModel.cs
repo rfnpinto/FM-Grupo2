@@ -35,5 +35,7 @@ namespace FM_Grupo2.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataFundacao;
+
+        public virtual ICollection<TemporadaModel> Temporada { get; set; }
     }
 }

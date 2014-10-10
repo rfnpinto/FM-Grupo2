@@ -11,15 +11,19 @@ namespace FM_Grupo2.Models
         public int ID { get; set; }
         
         [Required]
-        public int NJornada { get; set; }
+        public int NumJornada { get; set; }
 
         [Required]
-        public virtual TemporadaModel Temporada { get; set; }
+        public int TemporadaID { get; set; }
 
         [Required]
         public DateTime DataInicio { get; set; }
 
         [Required]
         public DateTime DataFim { get; set; }
+
+        public virtual ICollection<JogoModel> Jogo { get; set; }
+        
+        public virtual TemporadaModel Temporada { get; set; }
     }
 }

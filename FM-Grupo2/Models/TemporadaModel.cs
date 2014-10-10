@@ -18,7 +18,7 @@ namespace FM_Grupo2.Models
         public string Nome { get; set; }
         
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy/yyyy+1}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Ano { get; set; }
         
         [Required]
