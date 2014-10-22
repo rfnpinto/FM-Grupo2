@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FM_Grupo2.Models
 {
-    public class TemporadaModel
+    public class Temporada
     {
 
         /**
@@ -39,8 +39,8 @@ namespace FM_Grupo2.Models
         /**
          * Ligações aos outros modelos;
          */
-        public virtual CampeonatoModel Campeonato { get; set; }
-        public virtual ICollection<EquipaModel> Equipas { get; set; }
+        public virtual Campeonato Campeonato { get; set; }
+        public virtual ICollection<Equipa> Equipas { get; set; }
         
     }
 }

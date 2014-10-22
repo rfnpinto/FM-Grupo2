@@ -1,0 +1,66 @@
+﻿@model FM_Grupo2.Models.Campeonato
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Campeonato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogotipoPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogotipoPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntidadeOrganizadora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntidadeOrganizadora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFundacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFundacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CampeonatoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

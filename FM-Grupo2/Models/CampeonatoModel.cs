@@ -6,12 +6,12 @@ using System.Web;
 
 namespace FM_Grupo2.Models
 {
-    public class CampeonatoModel
+    public class Campeonato
     {
         /*
          * ID's
          */ 
-        public int ID { get; set; }
+        public int CampeonatoID { get; set; }
 
         /*
          * Campos do Modelo
@@ -53,6 +53,6 @@ namespace FM_Grupo2.Models
         /*
          * Ligações aos outros modelos
          */
-        public virtual ICollection<TemporadaModel> Temporada { get; set; }
+        public virtual ICollection<Temporada> Temporada { get; set; }
     }
 }

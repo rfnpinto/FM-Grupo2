@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FM_Grupo2.Models
 {
-    public class JogoModel
+    public class Jogo
     {
         /**
          * ID's;
@@ -26,7 +26,7 @@ namespace FM_Grupo2.Models
         /**
          * Ligações com outros modelos;
          */
-        public virtual ICollection<EquipaModel> Equipa { get; set; }
+        public virtual ICollection<Equipa> Equipa { get; set; }
     }
     
 }

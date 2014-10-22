@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FM_Grupo2.Models
 {
-    public class JornadaModel
+    public class Jornada
     {
         /**
          * ID's;
@@ -30,8 +30,8 @@ namespace FM_Grupo2.Models
          * Ligações aos outros modelos;
          */
 
-        public virtual TemporadaModel Temporada { get; set; }
+        public virtual Temporada Temporada { get; set; }
 
-        public virtual ICollection<JogoModel> Jogo { get; set; }
+        public virtual ICollection<Jogo> Jogo { get; set; }
     }
 }

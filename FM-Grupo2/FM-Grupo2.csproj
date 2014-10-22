@@ -171,8 +171,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampeonatoesController.cs" />
+    <Compile Include="Controllers\EquipasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JogoesController.cs" />
+    <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TemporadasController.cs" />
+    <Compile Include="DAL\FMContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -255,6 +261,31 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Campeonatoes\Create.cshtml" />
+    <Content Include="Views\Campeonatoes\Delete.cshtml" />
+    <Content Include="Views\Campeonatoes\Details.cshtml" />
+    <Content Include="Views\Campeonatoes\Edit.cshtml" />
+    <Content Include="Views\Campeonatoes\Index.cshtml" />
+    <Content Include="Views\Equipas\Create.cshtml" />
+    <Content Include="Views\Equipas\Delete.cshtml" />
+    <Content Include="Views\Equipas\Details.cshtml" />
+    <Content Include="Views\Equipas\Edit.cshtml" />
+    <Content Include="Views\Equipas\Index.cshtml" />
+    <Content Include="Views\Jogoes\Create.cshtml" />
+    <Content Include="Views\Jogoes\Delete.cshtml" />
+    <Content Include="Views\Jogoes\Details.cshtml" />
+    <Content Include="Views\Jogoes\Edit.cshtml" />
+    <Content Include="Views\Jogoes\Index.cshtml" />
+    <Content Include="Views\Jornadas\Create.cshtml" />
+    <Content Include="Views\Jornadas\Delete.cshtml" />
+    <Content Include="Views\Jornadas\Details.cshtml" />
+    <Content Include="Views\Jornadas\Edit.cshtml" />
+    <Content Include="Views\Jornadas\Index.cshtml" />
+    <Content Include="Views\Temporadas\Create.cshtml" />
+    <Content Include="Views\Temporadas\Delete.cshtml" />
+    <Content Include="Views\Temporadas\Details.cshtml" />
+    <Content Include="Views\Temporadas\Edit.cshtml" />
+    <Content Include="Views\Temporadas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,56 @@
+﻿@model FM_Grupo2.Models.Equipa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Equipa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeEquipa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeEquipa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logotipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logotipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clube)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clube)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localizacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localizacao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

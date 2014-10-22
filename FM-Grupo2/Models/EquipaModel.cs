@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FM_Grupo2.Models
 {
-    public class EquipaModel
+    public class Equipa
     {
         /**
          * ID's:
