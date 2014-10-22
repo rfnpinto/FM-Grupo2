@@ -24,7 +24,6 @@ namespace FM_Grupo2.Models
         [Required]
         public DateTime Hora { get; set; }
 
-        [Required]
         public string Resultado { get; set; }
     }
     

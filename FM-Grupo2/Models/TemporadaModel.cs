@@ -15,7 +15,7 @@ namespace FM_Grupo2.Models
         public int TemporadaID { get; set; }
 
         public int CampeonatoID { get; set; }
-
+        
         /**
          * Campos do Modelo;
          */
@@ -27,7 +27,7 @@ namespace FM_Grupo2.Models
         
         [Required]
         public string Descricao { get; set; }
-
+        
         public int NJornadas { get; set; }
 
         /**
@@ -35,6 +35,6 @@ namespace FM_Grupo2.Models
          */
         public virtual CampeonatoModel Campeonato { get; set; }
         public virtual ICollection<EquipaModel> Equipas { get; set; }
-
+        
     }
 }
