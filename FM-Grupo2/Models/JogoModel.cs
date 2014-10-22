@@ -19,7 +19,6 @@ namespace FM_Grupo2.Models
         public int EquipaVisitada { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 
         public string Resultado { get; set; }
