@@ -11,22 +11,23 @@ namespace FM_Grupo2.Models
         /**
          * ID's:
          */
-        public int EquipaID { get; set; }
+        public int ID { get; set; }
 
         /**
          * Campos do Modelo;
          */
-        [Required]
+        [Required(ErrorMessage = "O campo Nome Equipa é obrigatório.")]
         [StringLength(50, ErrorMessage = "O Nome da Equipa não pode execeder os 50 caracteres")]
+        [Display(Name = "Nome Equipa")]
         public string NomeEquipa { get; set; }
 
+        [Display(Name = "Logótipo")]
         public string Logotipo { get; set; }
 
+        [Display(Name = "Clube")]
         public string Clube { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DataFundacao { get; set; }
-
+        [Display(Name = "Localização")]
         public string Localizacao { get; set; }
     }
 }
