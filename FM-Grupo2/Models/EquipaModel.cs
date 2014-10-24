@@ -11,7 +11,7 @@ namespace FM_Grupo2.Models
         /**
          * ID's:
          */
-        public int ID { get; set; }
+        public int EquipaID { get; set; }
 
         /**
          * Campos do Modelo;
@@ -29,5 +29,7 @@ namespace FM_Grupo2.Models
 
         [Display(Name = "Localização")]
         public string Localizacao { get; set; }
+
+        public virtual ICollection<Temporada> Temporadas { get; set; }
     }
 }

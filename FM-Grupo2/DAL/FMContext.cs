@@ -23,6 +23,12 @@ namespace FM_Grupo2.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Temporada>()
+             .HasMany(c => c.Equipas).WithMany(i => i.Temporadas)
+             .Map(t => t.MapLeftKey("TemporadaID")
+                 .MapRightKey("EquipaID")
+                 .ToTable("TemporadaEquipa"));
         }
     }
 }

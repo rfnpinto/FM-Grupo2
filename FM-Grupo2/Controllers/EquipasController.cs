@@ -47,7 +47,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
+        public ActionResult Create([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
+        public ActionResult Edit([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
         {
             if (ModelState.IsValid)
             {
