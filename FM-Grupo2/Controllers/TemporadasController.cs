@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FM_Grupo2.DAL;
 using FM_Grupo2.Models;
+using FM_Grupo2.ViewModels;
 
 namespace FM_Grupo2.Controllers
 {
@@ -41,6 +42,9 @@ namespace FM_Grupo2.Controllers
         public ActionResult Create()
         {
             ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome");
+            var temporada = new Temporada();
+            temporada.Equipas = new List<Equipa>();
+            PopulateAssignedEquipaData(temporada);
             return View();
         }
 
@@ -93,6 +97,23 @@ namespace FM_Grupo2.Controllers
             }
             ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
             return View(temporada);
+        }
+
+        private void PopulateAssignedEquipaData(Temporada temporada)
+        {
+            var allEquipas = db.Equipas;
+            var instructorCourses = new HashSet<int>(temporada.Equipas.Select(c => c.EquipaID));
+            var viewModel = new List<AssignedEquipaData>();
+            foreach (var equipa in allEquipas)
+            {
+                viewModel.Add(new AssignedEquipaData
+                {
+                    EquipaID = equipa.EquipaID,
+                    Nome = equipa.NomeEquipa,
+                    Assigned = instructorCourses.Contains(equipa.EquipaID)
+                });
+            }
+            ViewBag.Equipas = viewModel;
         }
 
         // GET: Temporadas/Delete/5

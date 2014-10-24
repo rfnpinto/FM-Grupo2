@@ -61,9 +61,9 @@
                     <tr>
                         @{
                             int cnt = 0;
-                            List<FM_Grupo2.ViewModels.AssignedEquipaData> courses = ViewBag.Equipas;
+                            List<FM_Grupo2.ViewModels.AssignedEquipaData> equipas = ViewBag.Equipas;
 
-                            foreach (var course in courses)
+                            foreach (var equipa in equipas)
                             {
                                 if (cnt++ % 3 == 0)
                                 {
@@ -72,9 +72,9 @@
                                 @:<td>
                                     <input type="checkbox"
                                            name="selectedCourses"
-                                           value="@course.EquipaID"
-                                           @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
-                                    @course.EquipaID @:  @course.Nome
+                                           value="@equipa.EquipaID"
+                                           @(Html.Raw(equipa.Assigned ? "checked=\"checked\"" : "")) />
+                                    @equipa.EquipaID @:  @equipa.Nome
                                     @:</td>
                             }
                             @:</tr>
