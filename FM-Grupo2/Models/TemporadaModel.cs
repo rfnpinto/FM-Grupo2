@@ -14,7 +14,7 @@ namespace FM_Grupo2.Models
          */
         public int TemporadaID { get; set; }
 
-        [Display(Name = "Campeonato")]
+        [Display(Name = "Nome Campeonato")]
         public int CampeonatoID { get; set; }
         
         /**
@@ -39,6 +39,7 @@ namespace FM_Grupo2.Models
         /**
          * Ligações aos outros modelos;
          */
+        [Display(Name = "Nome Campeonato")]
         public virtual Campeonato Campeonato { get; set; }
         public virtual ICollection<Equipa> Equipas { get; set; }
         

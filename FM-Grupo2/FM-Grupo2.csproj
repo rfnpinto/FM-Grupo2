@@ -179,6 +179,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TemporadasController.cs" />
     <Compile Include="DAL\FMContext.cs" />
+    <Compile Include="DAL\FMInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

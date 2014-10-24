@@ -26,11 +26,11 @@ namespace FM_Grupo2.Models
 
         [Required(ErrorMessage="O campo Abragência é obrigatório.")]
         [Display(Name = "Abrangência")]
-        public char Abrangencia { get; set; }
+        public string Abrangencia { get; set; }
 
         [Required(ErrorMessage = "O campo Frequência é obrigatório.")]
         [Display(Name = "Frequência")]
-        public char Frequencia { get; set; }
+        public string Frequencia { get; set; }
 
         [Required(ErrorMessage="o campo Nacionalidade é obrigatório.")]
         [Display(Name = "Nacionalidade")]
@@ -38,7 +38,7 @@ namespace FM_Grupo2.Models
 
         [Required(ErrorMessage = "O campo Entidade Organizadora é obrigatório.")]
         [Display(Name = "Entidade Organizadora")]
-        public int EntidadeOrganizadora { get; set; }
+        public string EntidadeOrganizadora { get; set; }
 
         [Required(ErrorMessage = "O campo Descrição é obrigatório")]
         [StringLength(200, ErrorMessage = "A Descrição do Campeonato não pode execeder os 200 caracteres")]
@@ -46,7 +46,7 @@ namespace FM_Grupo2.Models
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "O campo Data de Fundação é obrigatório.")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data Fundação")]
         public DateTime DataFundacao { get; set; }
 
