@@ -11,17 +11,18 @@ using FM_Grupo2.Models;
 
 namespace FM_Grupo2.Controllers
 {
-    public class CampeonatoesController : Controller
+    public class CampeonatosController : Controller
     {
         private FMContext db = new FMContext();
 
-        // GET: Campeonatoes
+        // GET: Campeonatos
         public ActionResult Index()
         {
-            return View(db.Campeonatos.ToList());
+            var campeonatos = db.Campeonatos.Include(c => c.Country).Include(c => c.Frequency).Include(c => c.Scope);
+            return View(campeonatos.ToList());
         }
 
-        // GET: Campeonatoes/Details/5
+        // GET: Campeonatos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +37,21 @@ namespace FM_Grupo2.Controllers
             return View(campeonato);
         }
 
-        // GET: Campeonatoes/Create
+        // GET: Campeonatos/Create
         public ActionResult Create()
         {
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT");
+            ViewBag.FrequencyID = new SelectList(db.Frequency, "ID", "descriptionPT");
+            ViewBag.ScopeID = new SelectList(db.Scope, "ID", "descriptionPT");
             return View();
         }
 
-        // POST: Campeonatoes/Create
+        // POST: Campeonatos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CampeonatoID,Nome,LogotipoPath,Abrangencia,Frequencia,Nacionalidade,EntidadeOrganizadora,Descricao,DataFundacao")] Campeonato campeonato)
+        public ActionResult Create([Bind(Include = "CampeonatoID,Nome,LogotipoPath,FrequencyID,ScopeID,CountryID,EntidadeOrganizadora,Descricao,DataFundacao")] Campeonato campeonato)
         {
             if (ModelState.IsValid)
             {
@@ -56,10 +60,13 @@ namespace FM_Grupo2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", campeonato.CountryID);
+            ViewBag.FrequencyID = new SelectList(db.Frequency, "ID", "descriptionPT", campeonato.FrequencyID);
+            ViewBag.ScopeID = new SelectList(db.Scope, "ID", "descriptionPT", campeonato.ScopeID);
             return View(campeonato);
         }
 
-        // GET: Campeonatoes/Edit/5
+        // GET: Campeonatos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -71,15 +78,18 @@ namespace FM_Grupo2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", campeonato.CountryID);
+            ViewBag.FrequencyID = new SelectList(db.Frequency, "ID", "descriptionPT", campeonato.FrequencyID);
+            ViewBag.ScopeID = new SelectList(db.Scope, "ID", "descriptionPT", campeonato.ScopeID);
             return View(campeonato);
         }
 
-        // POST: Campeonatoes/Edit/5
+        // POST: Campeonatos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CampeonatoID,Nome,LogotipoPath,Abrangencia,Frequencia,Nacionalidade,EntidadeOrganizadora,Descricao,DataFundacao")] Campeonato campeonato)
+        public ActionResult Edit([Bind(Include = "CampeonatoID,Nome,LogotipoPath,FrequencyID,ScopeID,CountryID,EntidadeOrganizadora,Descricao,DataFundacao")] Campeonato campeonato)
         {
             if (ModelState.IsValid)
             {
@@ -87,10 +97,13 @@ namespace FM_Grupo2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", campeonato.CountryID);
+            ViewBag.FrequencyID = new SelectList(db.Frequency, "ID", "descriptionPT", campeonato.FrequencyID);
+            ViewBag.ScopeID = new SelectList(db.Scope, "ID", "descriptionPT", campeonato.ScopeID);
             return View(campeonato);
         }
 
-        // GET: Campeonatoes/Delete/5
+        // GET: Campeonatos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +118,7 @@ namespace FM_Grupo2.Controllers
             return View(campeonato);
         }
 
-        // POST: Campeonatoes/Delete/5
+        // POST: Campeonatos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

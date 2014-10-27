@@ -24,18 +24,23 @@ namespace FM_Grupo2.Models
         [Display(Name = "Logotipo")]
         public string LogotipoPath { get; set; }
 
-        [Required(ErrorMessage="O campo Abragência é obrigatório.")]
-        [Display(Name = "Abrangência")]
-        public string Abrangencia { get; set; }
-
+        /*
+         * ID's
+         */
         [Required(ErrorMessage = "O campo Frequência é obrigatório.")]
         [Display(Name = "Frequência")]
-        public string Frequencia { get; set; }
+        public int FrequencyID { get; set; }
 
-        [Required(ErrorMessage="o campo Nacionalidade é obrigatório.")]
-        [Display(Name = "Nacionalidade")]
-        public string Nacionalidade { get; set; }
+        [Required(ErrorMessage="O campo Abragência é obrigatório.")]
+        [Display(Name = "Abrangência")]
+        public int ScopeID { get; set; }
 
+        [Display(Name = "País de Origem")]
+        public int? CountryID { get; set; }
+
+        /*
+         * Campos do Modelo
+         */
         [Required(ErrorMessage = "O campo Entidade Organizadora é obrigatório.")]
         [Display(Name = "Entidade Organizadora")]
         public string EntidadeOrganizadora { get; set; }
@@ -54,5 +59,9 @@ namespace FM_Grupo2.Models
          * Ligações aos outros modelos
          */
         public virtual ICollection<Temporada> Temporada { get; set; }
+
+        public virtual FrequencyModel Frequency { get; set; }
+        public virtual ScopeModel Scope { get; set; }
+        public virtual CountryModel Country { get; set; }
     }
 }

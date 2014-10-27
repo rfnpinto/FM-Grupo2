@@ -19,6 +19,9 @@ namespace FM_Grupo2.DAL
         public DbSet<Equipa> Equipas { get; set; }
         public DbSet<Jornada> Jornadas { get; set; }
         public DbSet<Jogo> Jogos { get; set; }
+        public DbSet<FrequencyModel> Frequency { get; set; }
+        public DbSet<ScopeModel> Scope { get; set; }
+        public DbSet<CountryModel> Country { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

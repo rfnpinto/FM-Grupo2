@@ -171,7 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CampeonatoesController.cs" />
+    <Compile Include="Controllers\CampeonatosController.cs" />
     <Compile Include="Controllers\EquipasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoesController.cs" />
@@ -185,11 +185,14 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CampeonatoModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\EquipaModel.cs" />
+    <Compile Include="Models\FrequencyModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JornadaModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ScopeModel.cs" />
     <Compile Include="Models\TemporadaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -197,10 +200,6 @@
     <Compile Include="ViewModels\TemporadaIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\FMContext.mdf" />
-    <Content Include="App_Data\FMContext_log.ldf">
-      <DependentUpon>FMContext.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -268,11 +267,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Campeonatoes\Create.cshtml" />
-    <Content Include="Views\Campeonatoes\Delete.cshtml" />
-    <Content Include="Views\Campeonatoes\Details.cshtml" />
-    <Content Include="Views\Campeonatoes\Edit.cshtml" />
-    <Content Include="Views\Campeonatoes\Index.cshtml" />
     <Content Include="Views\Equipas\Create.cshtml" />
     <Content Include="Views\Equipas\Delete.cshtml" />
     <Content Include="Views\Equipas\Details.cshtml" />
@@ -293,8 +287,15 @@
     <Content Include="Views\Temporadas\Details.cshtml" />
     <Content Include="Views\Temporadas\Edit.cshtml" />
     <Content Include="Views\Temporadas\Index.cshtml" />
+    <Content Include="Views\Campeonatos\Create.cshtml" />
+    <Content Include="Views\Campeonatos\Delete.cshtml" />
+    <Content Include="Views\Campeonatos\Details.cshtml" />
+    <Content Include="Views\Campeonatos\Edit.cshtml" />
+    <Content Include="Views\Campeonatos\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
