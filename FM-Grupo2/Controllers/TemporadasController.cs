@@ -101,6 +101,7 @@ namespace FM_Grupo2.Controllers
 
         private void PopulateAssignedEquipaData(Temporada temporada)
         {
+            var campeonatoID = temporada.CampeonatoID;
             var allEquipas = db.Equipas;
             var instructorCourses = new HashSet<int>(temporada.Equipas.Select(c => c.EquipaID));
             var viewModel = new List<AssignedEquipaData>();

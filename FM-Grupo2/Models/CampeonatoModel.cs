@@ -27,6 +27,7 @@ namespace FM_Grupo2.Models
         /*
          * ID's
          */
+
         [Required(ErrorMessage = "O campo Frequência é obrigatório.")]
         [Display(Name = "Frequência")]
         public int FrequencyID { get; set; }

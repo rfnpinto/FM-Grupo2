@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Clube)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localizacao)
+            País
         </th>
         <th></th>
     </tr>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Clube)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Localizacao)
+            @Html.DisplayFor(modelItem => item.Country.NamePT)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EquipaID }) |

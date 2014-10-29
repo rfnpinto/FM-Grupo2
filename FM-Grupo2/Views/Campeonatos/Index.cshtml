@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Country.NameEN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Frequency.descriptionEN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Scope.descriptionEN)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LogotipoPath)
+        </th>
+        <th>
+            Abrangência
+        </th>
+        <th>
+            País
+        </th>
+        <th>
+            Frequência
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EntidadeOrganizadora)
@@ -41,19 +41,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Country.NameEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Frequency.descriptionEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scope.descriptionEN)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LogotipoPath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scope.descriptionPT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.NamePT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Frequency.descriptionPT)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EntidadeOrganizadora)

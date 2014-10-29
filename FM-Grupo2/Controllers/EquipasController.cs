@@ -18,7 +18,8 @@ namespace FM_Grupo2.Controllers
         // GET: Equipas
         public ActionResult Index()
         {
-            return View(db.Equipas.ToList());
+            var equipas = db.Equipas.Include(e => e.Country);
+            return View(equipas.ToList());
         }
 
         // GET: Equipas/Details/5
@@ -39,6 +40,7 @@ namespace FM_Grupo2.Controllers
         // GET: Equipas/Create
         public ActionResult Create()
         {
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
+        public ActionResult Create([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,CountryID")] Equipa equipa)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace FM_Grupo2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", equipa.CountryID);
             return View(equipa);
         }
 
@@ -71,6 +74,7 @@ namespace FM_Grupo2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", equipa.CountryID);
             return View(equipa);
         }
 
@@ -79,7 +83,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,Localizacao")] Equipa equipa)
+        public ActionResult Edit([Bind(Include = "EquipaID,NomeEquipa,Logotipo,Clube,CountryID")] Equipa equipa)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace FM_Grupo2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "NamePT", equipa.CountryID);
             return View(equipa);
         }
 

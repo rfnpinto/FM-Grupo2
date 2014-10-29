@@ -267,11 +267,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Equipas\Create.cshtml" />
-    <Content Include="Views\Equipas\Delete.cshtml" />
-    <Content Include="Views\Equipas\Details.cshtml" />
-    <Content Include="Views\Equipas\Edit.cshtml" />
-    <Content Include="Views\Equipas\Index.cshtml" />
     <Content Include="Views\Jogoes\Create.cshtml" />
     <Content Include="Views\Jogoes\Delete.cshtml" />
     <Content Include="Views\Jogoes\Details.cshtml" />
@@ -292,6 +287,11 @@
     <Content Include="Views\Campeonatos\Details.cshtml" />
     <Content Include="Views\Campeonatos\Edit.cshtml" />
     <Content Include="Views\Campeonatos\Index.cshtml" />
+    <Content Include="Views\Equipas\Create.cshtml" />
+    <Content Include="Views\Equipas\Delete.cshtml" />
+    <Content Include="Views\Equipas\Details.cshtml" />
+    <Content Include="Views\Equipas\Edit.cshtml" />
+    <Content Include="Views\Equipas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

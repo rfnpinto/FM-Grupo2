@@ -27,9 +27,12 @@ namespace FM_Grupo2.Models
         [Display(Name = "Clube")]
         public string Clube { get; set; }
 
+        [Required(ErrorMessage = "O campo País é obrigatório.")]
         [Display(Name = "Localização")]
-        public string Localizacao { get; set; }
+        public int CountryID { get; set; }
 
         public virtual ICollection<Temporada> Temporadas { get; set; }
+
+        public virtual CountryModel Country { get; set; }
     }
 }
