@@ -175,6 +175,7 @@ namespace FM_Grupo2.DAL
                new CountryModel{NameEN="",NamePT="Perú"},
                new CountryModel{NameEN="",NamePT="Polónia"},
                new CountryModel{NameEN="",NamePT="Porto Rico"},
+               new CountryModel{NameEN="",NamePT="Portugal"},
                new CountryModel{NameEN="",NamePT="Qatar"},
                new CountryModel{NameEN="",NamePT="Quénia"},
                new CountryModel{NameEN="",NamePT="Reino Unido"},
