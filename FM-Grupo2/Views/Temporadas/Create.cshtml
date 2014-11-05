@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CampeonatoID, "CampeonatoID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CampeonatoID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CampeonatoID", null, htmlAttributes: new { @class = "form-control", @id="DropDownListCampeonato" })
                 @Html.ValidationMessageFor(model => model.CampeonatoID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +62,12 @@
                         @{
                             int cnt = 0;
                             List<FM_Grupo2.ViewModels.AssignedEquipaData> equipas = ViewBag.Equipas;
-
+                            if(equipas.Count()==0)
+                            {
+                                <td>Ainda não existem equipas criadas</td>
+                            }
+                            else
+                            {
                             foreach (var equipa in equipas)
                             {
                                 if (cnt++ % 3 == 0)
@@ -76,7 +81,7 @@
                                            @(Html.Raw(equipa.Assigned ? "checked=\"checked\"" : "")) />
                                     @equipa.EquipaID @:  @equipa.Nome
                                     @:</td>
-                            }
+                            }}
                             @:</tr>
                         }
                     </table>
@@ -87,7 +92,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" id="submit"/>
             </div>
         </div>
     </div>
@@ -99,4 +104,10 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    if($("#DropDownListCampeonato").val()==null)
+    {
+        $("#submit").prop('disabled', false);
+    }
+</script>
 }
