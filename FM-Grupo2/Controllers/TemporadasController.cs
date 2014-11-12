@@ -61,14 +61,14 @@ namespace FM_Grupo2.Controllers
                 db.Temporadas.Add(temporada);
                 db.SaveChanges();
 
-                if(numeroJornadas>1 && numeroJornadas<=100)
+                if(numeroJornadas>=1 && numeroJornadas<=100)
                 {
-                    for (var i = 1; i >= numeroJornadas; i++)
+                    for (var i = 0; i <= numeroJornadas; i++)
                     {
 
                         Jornada jornada = new Jornada();
                         jornada.TemporadaID = temporada.TemporadaID;
-                        jornada.NumJornada = i;
+                        jornada.NumJornada = i+1;
                         jornada.DataInicio = DateTime.Now;
                         jornada.DataFim = DateTime.Now;
                         
