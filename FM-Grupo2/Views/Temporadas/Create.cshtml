@@ -18,15 +18,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CampeonatoID, "CampeonatoID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                new SelectList(ViewBag.CategoryTypes as System.Collections.IEnumerable, "CategoryTypeID", "Name"),
+                <!--new SelectList(ViewBag.CategoryTypes as System.Collections.IEnumerable, "CategoryTypeID", "Name"),
                 "--select Category Type --", new { id = "categoryType" })
-                @Html.DropDownList("CampeonatoID", new SelectList(ViewBag.Campeonato.ID as System.Collections.IEnumerable, "CapeonatoID", "Nome"),
-         "Seleciona um campeonato...", htmlAttributes: new { @class = "form-control", @id = "selectListCampeonatos", @data-category=})
+                //Html.DropDownList("CampeonatoID", new SelectList(ViewBag.Campeonato.ID as System.Collections.IEnumerable, "CapeonatoID", "Nome"),
+         "Seleciona um campeonato...", htmlAttributes: new { class = "form-control", id = "selectListCampeonatos"})-->
                 <select id="selectListCampeonatos" name="CampeonatoID" class="form-control">
                     <option>Seleciona um campeonato...</option>
                     @foreach (var campeonatos in ViewBag.CampeonatoID)
                     {
-                        <option value=@campeonatos.CampeonatoID data-category=@campeonatos.CountryID>@campeonatos.Nome</option>
+                        <option value=@campeonatos.CampeonatoID id=@campeonatos.CampeonatoID data-category=@campeonatos.CountryID>@campeonatos.Nome</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.CampeonatoID, "", new { @class = "text-danger" })
@@ -74,12 +74,12 @@
                             
                             int cnt = 0;
                             List<FM_Grupo2.ViewModels.AssignedEquipaData> equipas = ViewBag.Equipas;
-                            if(equipas.Count()==0)
-                            {
-                                <td>Ainda não existem equipas criadas</td>
-                            }
-                            else
-                            {
+                            //if(equipas.Count()==0)
+                            //{
+                              //  <td>Ainda não existem equipas criadas</td>
+                           // }
+                            //else
+                            //{
                                 foreach (var equipa in equipas)
                                 {
                                     if (cnt++ % 4 == 0)
@@ -96,7 +96,7 @@
                                         </p>
                                         @:</td>
                                 }
-                            }
+                            //}
                             @:</tr>
                         }
                     </table>

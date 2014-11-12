@@ -39,8 +39,8 @@ namespace FM_Grupo2.Controllers
         // GET: Temporadas/Create
         public ActionResult Create()
         {
-            ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome");
-            //ViewBag.CampeonatoID = db.Campeonatos.ToList();
+            //ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome");
+            ViewBag.CampeonatoID = db.Campeonatos.ToList();
             var temporada = new Temporada();
             temporada.Equipas = new List<Equipa>();
             PopulateAssignedEquipaData(temporada);
@@ -52,7 +52,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TemporadaID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
+        public ActionResult Create([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,11 @@ namespace FM_Grupo2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
+            ViewBag.CampeonatoID = db.Campeonatos.ToList();
+            var t = new Temporada();
+            t.Equipas = new List<Equipa>();
+            PopulateAssignedEquipaData(t);
+            //ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
             return View(temporada);
         }
 
