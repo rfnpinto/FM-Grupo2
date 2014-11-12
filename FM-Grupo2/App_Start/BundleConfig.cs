@@ -30,6 +30,9 @@ namespace FM_Grupo2
             bundles.Add(new StyleBundle("~/bundles/script").Include(
                 "~/Scripts/script.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/fmScript").Include(
+                "~/Scripts/FMScripts.js"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;

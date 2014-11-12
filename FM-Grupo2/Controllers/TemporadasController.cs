@@ -1,14 +1,12 @@
-﻿using System;
+﻿using FM_Grupo2.DAL;
+using FM_Grupo2.Models;
+using FM_Grupo2.ViewModels;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using FM_Grupo2.DAL;
-using FM_Grupo2.Models;
-using FM_Grupo2.ViewModels;
 
 namespace FM_Grupo2.Controllers
 {
@@ -42,6 +40,7 @@ namespace FM_Grupo2.Controllers
         public ActionResult Create()
         {
             ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome");
+            //ViewBag.CampeonatoID = db.Campeonatos.ToList();
             var temporada = new Temporada();
             temporada.Equipas = new List<Equipa>();
             PopulateAssignedEquipaData(temporada);
@@ -53,12 +52,32 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
+        public ActionResult Create([Bind(Include = "TemporadaID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
         {
             if (ModelState.IsValid)
             {
+                var numeroJornadas = temporada.NJornadas;
+                
                 db.Temporadas.Add(temporada);
                 db.SaveChanges();
+
+                if(numeroJornadas>1 && numeroJornadas<=100)
+                {
+                    for (var i = 1; i >= numeroJornadas; i++)
+                    {
+
+                        Jornada jornada = new Jornada();
+                        jornada.TemporadaID = temporada.TemporadaID;
+                        jornada.NumJornada = i;
+                        jornada.DataInicio = DateTime.Now;
+                        jornada.DataFim = DateTime.Now;
+                        
+
+                        db.Jornadas.Add(jornada);
+                        db.SaveChanges();
+                    }
+                }
+                
                 return RedirectToAction("Index");
             }
 
@@ -103,7 +122,7 @@ namespace FM_Grupo2.Controllers
         {
             var campeonatoID = temporada.CampeonatoID;
             var allEquipas = db.Equipas;
-            var instructorCourses = new HashSet<int>(temporada.Equipas.Select(c => c.EquipaID));
+            var equipasTemporada = new HashSet<int>(temporada.Equipas.Select(c => c.EquipaID));
             var viewModel = new List<AssignedEquipaData>();
             foreach (var equipa in allEquipas)
             {
@@ -111,7 +130,8 @@ namespace FM_Grupo2.Controllers
                 {
                     EquipaID = equipa.EquipaID,
                     Nome = equipa.NomeEquipa,
-                    Assigned = instructorCourses.Contains(equipa.EquipaID)
+                    CountryID = equipa.CountryID,
+                    Assigned = equipasTemporada.Contains(equipa.EquipaID)
                 });
             }
             ViewBag.Equipas = viewModel;

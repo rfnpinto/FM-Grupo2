@@ -9,6 +9,7 @@ namespace FM_Grupo2.ViewModels
     {
         public int EquipaID { get; set; }
         public string Nome { get; set; }
+        public int CountryID { get; set; }
         public bool Assigned { get; set; }
     }
 }
