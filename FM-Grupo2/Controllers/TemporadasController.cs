@@ -52,8 +52,17 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
+        public ActionResult Create([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada, string[] selectedEquipas)
         {
+            if (selectedEquipas != null)
+            {
+                temporada.Equipas = new List<Equipa>();
+                foreach (var course in selectedEquipas)
+                {
+                    var equipaToAdd = db.Equipas.Find(int.Parse(course));
+                    temporada.Equipas.Add(equipaToAdd);
+                }
+            }
             if (ModelState.IsValid)
             {
                 var numeroJornadas = temporada.NJornadas;
@@ -63,7 +72,7 @@ namespace FM_Grupo2.Controllers
 
                 if(numeroJornadas>=1 && numeroJornadas<=100)
                 {
-                    for (var i = 0; i <= numeroJornadas; i++)
+                    for (var i = 0; i < numeroJornadas; i++)
                     {
 
                         Jornada jornada = new Jornada();
@@ -82,9 +91,7 @@ namespace FM_Grupo2.Controllers
             }
 
             ViewBag.CampeonatoID = db.Campeonatos.ToList();
-            var t = new Temporada();
-            t.Equipas = new List<Equipa>();
-            PopulateAssignedEquipaData(t);
+            PopulateAssignedEquipaData(temporada);
             //ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
             return View(temporada);
         }
@@ -96,12 +103,21 @@ namespace FM_Grupo2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Temporada temporada = db.Temporadas.Find(id);
+            //Temporada temporada = db.Temporadas.Find(id);
+            Temporada temporada = db.Temporadas
+                .Include(i => i.Campeonato)
+                .Include(i => i.Equipas)
+                .Where(i => i.TemporadaID == id)
+                .Single();
+            
+            PopulateAssignedEquipaData(temporada);
+            
             if (temporada == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
+            //ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
+            ViewBag.CampeonatoID = db.Campeonatos.ToList();
             return View(temporada);
         }
 
@@ -110,7 +126,7 @@ namespace FM_Grupo2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada)
+        public ActionResult Edit([Bind(Include = "TemporadaID,CampeonatoID,Nome,Ano,Descricao,NJornadas")] Temporada temporada, string[] selectedEquipas)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +134,11 @@ namespace FM_Grupo2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
+            //ViewBag.CampeonatoID = new SelectList(db.Campeonatos, "CampeonatoID", "Nome", temporada.CampeonatoID);
+            ViewBag.CampeonatoID = db.Campeonatos.ToList();
+            var t = new Temporada();
+            t.Equipas = new List<Equipa>();
+            PopulateAssignedEquipaData(t);
             return View(temporada);
         }
 

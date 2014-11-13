@@ -10,14 +10,7 @@
     <h4>Equipa</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Country.NameEN)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country.NameEN)
-        </dd>
-
+        
         <dt>
             @Html.DisplayNameFor(model => model.NomeEquipa)
         </dt>
@@ -40,6 +33,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Clube)
+        </dd>
+
+        <dt>
+            País
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.NamePT)
         </dd>
 
     </dl>

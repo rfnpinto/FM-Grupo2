@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Country.NameEN)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.NomeEquipa)
         </th>
         <th>
@@ -23,14 +20,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Clube)
         </th>
+        <th>
+            País
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country.NameEN)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NomeEquipa)
         </td>
@@ -39,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Clube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.NamePT)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EquipaID }) |

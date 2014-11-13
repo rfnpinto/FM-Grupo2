@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.NJornadas)
         </th>
+        <th>
+            Equipas
+        </th>
         <th></th>
     </tr>
 
@@ -46,6 +49,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.NJornadas)
         </td>
+        <td>
+            @{
+                foreach (var equipa in item.Equipas)
+                {
+                     @equipa.NomeEquipa <br />
+                }
+            }
+        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TemporadaID }) |
             @Html.ActionLink("Details", "Details", new { id=item.TemporadaID }) |

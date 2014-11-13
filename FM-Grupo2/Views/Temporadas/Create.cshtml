@@ -18,10 +18,6 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CampeonatoID, "CampeonatoID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <!--new SelectList(ViewBag.CategoryTypes as System.Collections.IEnumerable, "CategoryTypeID", "Name"),
-                "--select Category Type --", new { id = "categoryType" })
-                //Html.DropDownList("CampeonatoID", new SelectList(ViewBag.Campeonato.ID as System.Collections.IEnumerable, "CapeonatoID", "Nome"),
-         "Seleciona um campeonato...", htmlAttributes: new { class = "form-control", id = "selectListCampeonatos"})-->
                 <select id="selectListCampeonatos" name="CampeonatoID" class="form-control">
                     <option>Seleciona um campeonato...</option>
                     @foreach (var campeonatos in ViewBag.CampeonatoID)
@@ -74,12 +70,12 @@
                             
                             int cnt = 0;
                             List<FM_Grupo2.ViewModels.AssignedEquipaData> equipas = ViewBag.Equipas;
-                            //if(equipas.Count()==0)
-                            //{
-                              //  <td>Ainda não existem equipas criadas</td>
-                           // }
-                            //else
-                            //{
+                            if(equipas.Count()==0)
+                            {
+                                <td>Ainda não existem equipas criadas</td>
+                            }
+                            else
+                            {
                                 foreach (var equipa in equipas)
                                 {
                                     if (cnt++ % 4 == 0)
@@ -89,14 +85,14 @@
                                     @:<td>
                                         <p data-category="@equipa.CountryID" class="hidden">
                                             <input type="checkbox"
-                                                   name="selectedCourses"
+                                                   name="selectedEquipas"
                                                    value="@equipa.EquipaID"
                                                    @(Html.Raw(equipa.Assigned ? "checked=\"checked\"" : "")) />
                                                @equipa.Nome
                                         </p>
                                         @:</td>
                                 }
-                            //}
+                            }
                             @:</tr>
                         }
                     </table>

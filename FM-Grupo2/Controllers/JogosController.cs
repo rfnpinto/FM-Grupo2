@@ -40,7 +40,9 @@ namespace FM_Grupo2.Controllers
         // GET: Jogos/Create
         public ActionResult Create()
         {
-            ViewBag.JornadaID = new SelectList(db.Jornadas, "JornadaID", "JornadaID");
+            ViewBag.TemporadaID = db.Temporadas.ToList();
+            ViewBag.JornadaID = db.Jornadas.ToList();
+            db.Database.ExecuteSqlCommand("Select TemporadaID, Nome.Equipa,  From Equipa INNER JOIN TemporadaEquipa INNER JOIN Temporada");
             return View();
         }
 
@@ -58,7 +60,8 @@ namespace FM_Grupo2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.JornadaID = new SelectList(db.Jornadas, "JornadaID", "JornadaID", jogo.JornadaID);
+            ViewBag.TemporadaID = db.Temporadas.ToList();
+            ViewBag.JornadaID = db.Jornadas.ToList();
             return View(jogo);
         }
 

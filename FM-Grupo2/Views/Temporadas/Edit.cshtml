@@ -20,7 +20,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CampeonatoID, "CampeonatoID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CampeonatoID", null, htmlAttributes: new { @class = "form-control" })
+                <select id="selectListCampeonatos" name="CampeonatoID" class="form-control">
+                    <option>Seleciona um campeonato...</option>
+                    @foreach (var campeonatos in ViewBag.CampeonatoID)
+                    {
+                        <option value=@campeonatos.CampeonatoID id=@campeonatos.CampeonatoID data-category=@campeonatos.CountryID>@campeonatos.Nome</option>
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.CampeonatoID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,8 +58,45 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NJornadas, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NJornadas, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NJornadas, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.NJornadas, new { htmlAttributes = new { @class = "form-control", @id = "inputNumeroJornadas" } })
+                @Html.ValidationMessageFor(model => model.NJornadas, "", new { @class = "text-danger", @id = "informacaoNumeroJornadas" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table id="tableEquipas">
+                    <tr id="informacaoEquipas" class="hidden text-center"></tr>
+                    <tr>
+                        @{
+                            
+                        int cnt = 0;
+                        List<FM_Grupo2.ViewModels.AssignedEquipaData> equipas = ViewBag.Equipas;
+                        if (equipas.Count() == 0)
+                        {
+                            <td>Ainda não existem equipas criadas</td>
+                        }
+                        else
+                        {
+                            foreach (var equipa in equipas)
+                            {
+                                if (cnt++ % 4 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                    <p data-category="@equipa.CountryID" class="hidden">
+                                        <input type="checkbox"
+                                               name="selectedEquipas"
+                                               value="@equipa.EquipaID"
+                                               @(Html.Raw(equipa.Assigned ? "checked=\"checked\"" : "")) />
+                                        @equipa.Nome</p>
+                                @:</td>
+                           }
+                       }
+                       @:</tr>
+                }
+                </table>
             </div>
         </div>
 

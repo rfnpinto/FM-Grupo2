@@ -10,7 +10,7 @@ namespace FM_Grupo2.DAL
 {
     public class FMContext: DbContext
     {
-        public FMContext() : base("FM_Context")
+        public FMContext() : base("FMContext")
         {
         }
 
