@@ -42,7 +42,9 @@ namespace FM_Grupo2.Controllers
         {
             ViewBag.TemporadaID = db.Temporadas.ToList();
             ViewBag.JornadaID = db.Jornadas.ToList();
-            db.Database.ExecuteSqlCommand("Select TemporadaID, Nome.Equipa,  From Equipa INNER JOIN TemporadaEquipa INNER JOIN Temporada");
+            ViewBag.Equipas = db.Equipas.ToList();
+            //var Equipas = db.Database.ExecuteSqlCommand("Select Equipa.NomeEquipa, TemporadaEquipa.TemporadaID, TemporadaEquipa.EquipaID  From TemporadaEquipa INNER JOIN Temporada " +
+            //" ON TemporadaEquipa.TemporadaID=Temporada.TemporadaID INNER JOIN Equipa ON TemporadaEquipa.EquipaID=Equipa.EquipaID");
             return View();
         }
 
